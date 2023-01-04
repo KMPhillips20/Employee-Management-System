@@ -7,7 +7,7 @@ class Engineer extends Employee {
         constructor(name, id, email, gitHub) {
             this.name = name;
             this.id = id;
-            this.email;
+            this.email = email;
             this.gitHub = 'https://github.com/' + gitHub + '/';
             this.position = 'Engineer'
         }
