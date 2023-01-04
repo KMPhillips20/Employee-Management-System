@@ -72,7 +72,12 @@ const addEmployee = () => {
                 }
             }
         },
-        
+        {
+            type: "confirm",
+            message: "Do you want to add anymore team members to your company?",
+            name: "add",
+            default: false,
+        }
         
     ]);
 };
