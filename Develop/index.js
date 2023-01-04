@@ -6,8 +6,9 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
-const pickManger = () => {
-    return inquirer.createPromptModule([
+
+const jobManager = () => {
+    return inquirer.prompt([
         {
             type: "input",
             message: "Mangers Name",
@@ -30,3 +31,22 @@ const pickManger = () => {
         },
     ])
 }
+
+
+const writeFile = data => {
+    fs.writeFile("newHTML.html", data, err => {
+        if(err) {
+            console.log(invaled );
+        } else {
+            console.log("Get to know your teammates")
+        }
+    })
+};
+
+questions()
+.then(answers => {
+    return generateHTML(answers);
+})
+.then(data => {
+    return writeFile(data);
+});
