@@ -1,10 +1,10 @@
-const inquirer = require('inquirer');
-const fs = require('fs');
+const inquirer = require("inquirer");
+const fs = require("fs");
 const generateHTML = require('./src/page-template');
 
-const Manager = require('./lib/Manager');
-const Engineer = require('./lib/Engineer');
-const Intern = require('./lib/Intern');
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 
 const addEmployee = () => {
     return inquirer.prompt([
@@ -108,16 +108,16 @@ const addEmployee = () => {
 
 return inquirer.prompt()
     .then(employeeData => {
-        let { position, name, employeesEmail, workersID, officePhoneNumbers, gitHubAccounts, educationalBackground } = employeeData;
+        let { position, name, email, id, officeNumber, gitHub, school} = employeeData;
         let employee;
-        if (position === 'Manager') {
-            employee = new Manager(name, employeesEmail, workersID, officePhoneNumbers)
+        if (position === "Manager") {
+            employee = new Manager(name, email, id, officeNumber)
         }
-        if (position === 'Engineer') {
-            employee = new Engineer(name, employeesEmail, workersID, gitHubAccounts)
+        if (position === "Engineer") {
+            employee = new Engineer(name, email, id, gitHub)
         }
-        if (position === 'Intern') {
-            employee = new Intern(name, employeesEmail, workersID, educationalBackground)
+        if (position === "Intern") {
+            employee = new Intern(name, email, id, school)
         }
     });
 
@@ -126,7 +126,7 @@ return inquirer.prompt()
 const writeFile = data => {
     fs.writeFile("new.html", data, err => {
         if (err) {
-            console.log(invaled );
+            console.log(err);
         } else {
             console.log("Get to know your teammates")
         }
