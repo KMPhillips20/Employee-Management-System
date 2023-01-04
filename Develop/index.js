@@ -67,7 +67,7 @@ const addEmployee = () => {
                 if (educationBackground) {
                     return true;
                 } else {
-                    console.log("Must enter you Education Background.");
+                    console.log("Must enter your Education Background.");
                     return false; 
                 }
             }
