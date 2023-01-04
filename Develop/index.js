@@ -32,11 +32,11 @@ const addEmployee = () => {
         },
         {
             type: "input",
-            message: "Employees office number?",
-            name: "officeNumber",
-            when:(officeNumberInput) => officeNumberInput.role === "Manager",
-            validate: officeNumberInput => {
-                if (officeNumberInput) {
+            message: "Managers office number?",
+            name: "officePhoneNumber",
+            when:(officePhoneNumber) => officePhoneNumber.role === "Manager",
+            validate: officePhoneNumber => {
+                if (officePhoneNumber) {
                     return true;
                 } else {
                     console.log("Must enter Managers Office Number.");
@@ -47,7 +47,16 @@ const addEmployee = () => {
         {
             type: "input",
             message: "Employee GitHub account?",
-            name: "github",
+            name: "gitHubAccount",
+            when:(gitHubAccount) => gitHubAccount.role === "Engineer",
+            validate: gitHubAccount => {
+                if (gitHubAccount) {
+                    return true;
+                } else {
+                    console.log("Must enter Engineer Git Hub Account.");
+                    return false; 
+                }
+            }
         },
         
     ]);
