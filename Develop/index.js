@@ -19,22 +19,46 @@ const addEmployee = () => {
             type: "input",
             message: "Employee name?",
             name: "name",
+            validate: employeePosition => {
+                if (employeePosition) {
+                    return true;
+                } else {
+                    console.log("Must enter Employee name.");
+                    return false; 
+                }
+            }
         },
         {
             type: "input",
             message: "Employee email?",
-            name: "email",
+            name: "employeeEmail",
+            validate: employeeEmail => {
+                if (employeeEmail) {
+                    return true;
+                } else {
+                    console.log("Must enter Employee email.");
+                    return false; 
+                }
+            }
         },
         {
             type: "input",
             message: "Employee ID?",
-            name: "ID"
+            name: "workerID",
+            validate: workerId => {
+                if (workerId) {
+                    return true;
+                } else {
+                    console.log("Must enter Employee ID.");
+                    return false; 
+                }
+            }
         },
         {
             type: "input",
             message: "Managers office number?",
             name: "officePhoneNumber",
-            when:(officePhoneNumber) => officePhoneNumber.role === "Manager",
+            when: (officePhoneNumber) => officePhoneNumber.role === "Manager",
             validate: officePhoneNumber => {
                 if (officePhoneNumber) {
                     return true;
@@ -48,7 +72,7 @@ const addEmployee = () => {
             type: "input",
             message: "Employee GitHub account?",
             name: "gitHubAccount",
-            when:(gitHubAccount) => gitHubAccount.role === "Engineer",
+            when: (gitHubAccount) => gitHubAccount.role === "Engineer",
             validate: gitHubAccount => {
                 if (gitHubAccount) {
                     return true;
@@ -62,7 +86,7 @@ const addEmployee = () => {
             type: "input",
             message: "What school or college do you attend?",
             name: "educationBackground",
-            when:(educationBackground) => educationBackground.role === "Intern",
+            when: (educationBackground) => educationBackground.role === "Intern",
             validate: educationBackground=> {
                 if (educationBackground) {
                     return true;
