@@ -19,8 +19,8 @@ const addEmployee = () => {
             type: "input",
             message: "Employee name?",
             name: "name",
-            validate: employeePosition => {
-                if (employeePosition) {
+            validate: Position => {
+                if (Position) {
                     return true;
                 } else {
                     console.log("Must enter Employee name.");
@@ -30,10 +30,10 @@ const addEmployee = () => {
         },
         {
             type: "input",
-            message: "Employee email?",
-            name: "employeesEmail",
-            validate: employeeEmail => {
-                if (employeeEmail) {
+            message: "email?",
+            name: "email",
+            validate: email => {
+                if (email) {
                     return true;
                 } else {
                     console.log("Must enter Employee email.");
@@ -44,9 +44,9 @@ const addEmployee = () => {
         {
             type: "input",
             message: "Employee ID?",
-            name: "workersID",
-            validate: workerId => {
-                if (workerId) {
+            name: "id",
+            validate: id => {
+                if (id) {
                     return true;
                 } else {
                     console.log("Must enter Employee ID.");
@@ -57,10 +57,10 @@ const addEmployee = () => {
         {
             type: "input",
             message: "Managers office number?",
-            name: "officePhoneNumbers",
-            when: (officePhoneNumber) => officePhoneNumber.role === "Manager",
-            validate: officePhoneNumber => {
-                if (officePhoneNumber) {
+            name: "officeNumber",
+            when: (officeNumber) => officeNumber.role === "Manager",
+            validate: officeNumber => {
+                if (officeNumber) {
                     return true;
                 } else {
                     console.log("Must enter Managers Office Number.");
@@ -71,10 +71,10 @@ const addEmployee = () => {
         {
             type: "input",
             message: "Employee GitHub account?",
-            name: "gitHubAccounts",
-            when: (gitHubAccount) => gitHubAccount.role === "Engineer",
-            validate: gitHubAccount => {
-                if (gitHubAccount) {
+            name: "gitHub",
+            when: (gitHub) => gitHub.role === "Engineer",
+            validate: gitHub => {
+                if (gitHub) {
                     return true;
                 } else {
                     console.log("Must enter Engineer Git Hub Account.");
@@ -85,10 +85,10 @@ const addEmployee = () => {
         {
             type: "input",
             message: "What school or college do you attend?",
-            name: "educationalBackground",
-            when: (educationBackground) => educationBackground.role === "Intern",
-            validate: educationBackground=> {
-                if (educationBackground) {
+            name: "school",
+            when: (school) => school.role === "Intern",
+            validate: school=> {
+                if (school) {
                     return true;
                 } else {
                     console.log("Must enter your Education Background.");
