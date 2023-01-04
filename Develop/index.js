@@ -34,7 +34,34 @@ const jobManager = () => {
         }
     ])
 }
+
+
+const jobEngineer = () => {
+    return inquirer.prompt([
+        {
+            type: "input",
+            message: "Engineer Name",
+            name: "name",
+        },
+        {
+            type: "input",
+            message: "Engineer ID number",
+            name: "ID",
+        },
+        {
+            type: "input",
+            message: "Engineer Email",
+            name: "email",
+        },
+        {
+            type: "input",
+            message: "Engineer GitHub accout",
+            name: "GitHub",
+        }
+    ])
+}
 };
+
 
 
 const writeFile = data => {
