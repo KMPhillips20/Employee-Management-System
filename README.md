@@ -13,9 +13,10 @@ This challenge was to build a node.js command line application that takes in inf
 ***
 ## Visuals
 
+![Passing-Test](./Assets/pass.test.jpg)
 
 
 ***
 ## Links
-
+Link to my GitHub: [Employee-Management-System](https://github.com/KMPhillips20/Employee-Management-System)
 ***
