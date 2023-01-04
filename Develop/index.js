@@ -6,61 +6,46 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
-const createTeam = () => {
-
-
-
-const jobManager = () => {
+const addEmployee = () => {
     return inquirer.prompt([
         {
+            type: "list",
+            message: "What is your position?",
+            name: "position",
+        },
+        {
             type: "input",
-            message: "Mangers Name",
+            message: "Employee name?",
             name: "name",
         },
         {
             type: "input",
-            message: "Managers ID number",
-            name: "ID",
-        },
-        {
-            type: "input",
-            message: "Managers Email",
+            message: "Employee email?",
             name: "email",
         },
         {
             type: "input",
-            message: "Managers Office Number",
-            name: "phoneNumber",
-        }
-    ])
-}
-
-
-const jobEngineer = () => {
-    return inquirer.prompt([
-        {
-            type: "input",
-            message: "Engineer Name",
-            name: "name",
+            message: "Employees office number?",
+            name: "officeNumber",
         },
         {
             type: "input",
-            message: "Engineer ID number",
+            message: "Employee GitHub account?",
             name: "ID",
         },
         {
-            type: "input",
-            message: "Engineer Email",
-            name: "email",
-        },
-        {
-            type: "input",
-            message: "Engineer GitHub accout",
-            name: "GitHub",
+            type: "confirm",
+            message: "Do you want to add anymore Employees to the team?",
+            name: "add",
+            if (answer = false) {
+                return answer
+            } else {
+                addEmployee()
+            }
         }
-    ])
-}
+    ]);
 };
+
 
 
 
@@ -74,7 +59,7 @@ const writeFile = data => {
     })
 };
 
-createTeam()
+addEmployee()
 .then(answers => {
     return generateHTML(answers);
 })
