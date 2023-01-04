@@ -9,7 +9,7 @@ class Manager extends Employee {
         this.name = name;
         this.id = id;
         this.email = email;
-        this.officeNumber = num;
+        this.officeNumber = officeNumber;
         this.position = 'Manager';
     }
 

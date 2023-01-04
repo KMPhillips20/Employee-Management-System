@@ -7,7 +7,7 @@ describe("Interns", () => {
         const id = 1023;
         const email = 'kylephillips65@yahoo.com';
         const school = 'NCSU';
-        const intern = new Intern(name, id, email,school)
+        const intern = new Intern(name, id, email, school)
 
         expect(typeof intern).toBe('object')
     });
