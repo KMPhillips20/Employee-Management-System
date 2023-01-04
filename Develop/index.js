@@ -58,6 +58,21 @@ const addEmployee = () => {
                 }
             }
         },
+        {
+            type: "input",
+            message: "What school or college do you attend?",
+            name: "educationBackground",
+            when:(educationBackground) => educationBackground.role === "Intern",
+            validate: educationBackground=> {
+                if (educationBackground) {
+                    return true;
+                } else {
+                    console.log("Must enter you Education Background.");
+                    return false; 
+                }
+            }
+        },
+        
         
     ]);
 };
