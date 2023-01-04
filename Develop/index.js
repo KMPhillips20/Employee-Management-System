@@ -31,7 +31,7 @@ const addEmployee = () => {
         {
             type: "input",
             message: "Employee email?",
-            name: "employeeEmail",
+            name: "employeesEmail",
             validate: employeeEmail => {
                 if (employeeEmail) {
                     return true;
@@ -44,7 +44,7 @@ const addEmployee = () => {
         {
             type: "input",
             message: "Employee ID?",
-            name: "workerID",
+            name: "workersID",
             validate: workerId => {
                 if (workerId) {
                     return true;
@@ -57,7 +57,7 @@ const addEmployee = () => {
         {
             type: "input",
             message: "Managers office number?",
-            name: "officePhoneNumber",
+            name: "officePhoneNumbers",
             when: (officePhoneNumber) => officePhoneNumber.role === "Manager",
             validate: officePhoneNumber => {
                 if (officePhoneNumber) {
@@ -71,7 +71,7 @@ const addEmployee = () => {
         {
             type: "input",
             message: "Employee GitHub account?",
-            name: "gitHubAccount",
+            name: "gitHubAccounts",
             when: (gitHubAccount) => gitHubAccount.role === "Engineer",
             validate: gitHubAccount => {
                 if (gitHubAccount) {
@@ -85,7 +85,7 @@ const addEmployee = () => {
         {
             type: "input",
             message: "What school or college do you attend?",
-            name: "educationBackground",
+            name: "educationalBackground",
             when: (educationBackground) => educationBackground.role === "Intern",
             validate: educationBackground=> {
                 if (educationBackground) {
@@ -106,11 +106,26 @@ const addEmployee = () => {
     ]);
 };
 
+return inquirer.prompt()
+    .then(employeeData => {
+        let { position, name, employeesEmail, workersID, officePhoneNumbers, gitHubAccounts, educationalBackground } = employeeData;
+        let employee;
+        if (position === 'Manager') {
+            employee = new Manager(name, employeesEmail, workersID, officePhoneNumbers)
+        }
+        if (position === 'Engineer') {
+            employee = new Engineer(name, employeesEmail, workersID, gitHubAccounts)
+        }
+        if (position === 'Intern') {
+            employee = new Intern(name, employeesEmail, workersID, educationalBackground)
+        }
+    });
+
 
 
 
 const writeFile = data => {
-    fs.writeFile("newHTML.html", data, err => {
+    fs.writeFile("new.html", data, err => {
         if (err) {
             console.log(invaled );
         } else {
@@ -118,7 +133,6 @@ const writeFile = data => {
         }
     })
 };
-
 addEmployee()
 .then(answers => {
     return generateHTML(answers);
