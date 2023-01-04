@@ -123,7 +123,6 @@ return inquirer.prompt()
 
 
 
-
 const writeFile = data => {
     fs.writeFile("new.html", data, err => {
         if (err) {
@@ -133,6 +132,7 @@ const writeFile = data => {
         }
     })
 };
+
 addEmployee()
 .then(answers => {
     return generateHTML(answers);
