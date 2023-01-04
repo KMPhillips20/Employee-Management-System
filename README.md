@@ -1,2 +1,21 @@
 # Employee-Management-System
-Employee-Management-System
+
+
+## Table of Content
+- [Description](#description)
+- [Visuals](#visuals)
+- [Links](#links)
+
+***
+## Description
+This challenge was to build a node.js command line application that takes in information about employees on a software engineering team. It will then generate a HTML webpage that displays information for each perosn. Theres a manager card, Engineer card, and a Intern card that will be filled out depending on what position the person is. The user will inter  This challenge required the use of inquirer package so you will have to install that before you do anything. 
+
+***
+## Visuals
+
+
+
+***
+## Links
+
+***

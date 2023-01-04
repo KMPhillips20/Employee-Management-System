@@ -6,6 +6,9 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
+const createTeam = () => {
+
+
 
 const jobManager = () => {
     return inquirer.prompt([
@@ -28,14 +31,15 @@ const jobManager = () => {
             type: "input",
             message: "Managers Office Number",
             name: "phoneNumber",
-        },
+        }
     ])
 }
+};
 
 
 const writeFile = data => {
     fs.writeFile("newHTML.html", data, err => {
-        if(err) {
+        if (err) {
             console.log(invaled );
         } else {
             console.log("Get to know your teammates")
@@ -43,7 +47,7 @@ const writeFile = data => {
     })
 };
 
-questions()
+createTeam()
 .then(answers => {
     return generateHTML(answers);
 })
