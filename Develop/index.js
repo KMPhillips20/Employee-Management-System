@@ -12,6 +12,8 @@ const addEmployee = () => {
             type: "list",
             message: "What is your position?",
             name: "position",
+            choices: ["Manager", "Engineer", "Intern"],
+            
         },
         {
             type: "input",
@@ -25,24 +27,29 @@ const addEmployee = () => {
         },
         {
             type: "input",
+            message: "Employee ID?",
+            name: "ID"
+        },
+        {
+            type: "input",
             message: "Employees office number?",
             name: "officeNumber",
+            when:(officeNumberInput) => officeNumberInput.role === "Manager",
+            validate: officeNumberInput => {
+                if (officeNumberInput) {
+                    return true;
+                } else {
+                    console.log("Must enter Managers Office Number.");
+                    return false; 
+                }
+            }
         },
         {
             type: "input",
             message: "Employee GitHub account?",
-            name: "ID",
+            name: "github",
         },
-        {
-            type: "confirm",
-            message: "Do you want to add anymore Employees to the team?",
-            name: "add",
-            if (answer = false) {
-                return answer
-            } else {
-                addEmployee()
-            }
-        }
+        
     ]);
 };
 
