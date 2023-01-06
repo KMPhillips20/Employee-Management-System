@@ -31,7 +31,7 @@ const employeeBio =[
         },
         {
             type: "input",
-            message: "email?",
+            message: "Employee email?",
             name: "email",
             validate: email => {
                 if (email) {
