@@ -14,23 +14,23 @@ class Intern extends Employee {
     }
 
     getName() {
-        return this.name
+        return this.name;
     }
 
     getId() {
-        return this.id
+        return this.id;
     }
 
     getEmail() {
-        return this.email
+        return this.email;
     }
 
     getSchool() {
-        return this.school
+        return this.school;
     }
 
     getPosition() {
-        return this. position
+        return "Intern";
     }
 
 

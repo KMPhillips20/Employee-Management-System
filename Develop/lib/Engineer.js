@@ -14,23 +14,23 @@ class Engineer extends Employee {
         }
 
         getName() {
-            return this.name
+            return this.name;
         }
     
         getId() {
-            return this.id
+            return this.id;
         }
     
         getEmail() {
-            return this.email
+            return this.email;
         }
 
         getGitHub() {
-            return this.gitHub
+            return this.gitHub;
         }
     
         getPosition() {
-            return this. position
+            return "Engineer";
         }
     }
     

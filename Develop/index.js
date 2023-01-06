@@ -119,8 +119,8 @@ const writeFile = data => {
 
 const addEmployee = () => {
     return inquirer.prompt(employeeBio)
-    .then(data => {
-        let { position, name, email, id, officeNumber, gitHub, school} = data;
+    .then(employeeData => {
+        let { position, name, email, id, officeNumber, gitHub, school} = employeeData;
         let employee;
         if (position === "Manager") {
             employee = new Manager(name, email, id, officeNumber)
@@ -132,6 +132,12 @@ const addEmployee = () => {
             employee = new Intern(name, email, id, school)
         }
         teamArray.push(employee);
+
+        if (employeeData.confirmAddEmployee) {
+            return addEmployee(teamArray);
+        } else{
+            return teamArray;
+        }
     });
 };
 

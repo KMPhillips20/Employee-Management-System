@@ -10,19 +10,19 @@ class Employee {
     }
 
     getName() {
-        return this.name
+        return this.name;
     }
 
     getId() {
-        return this.id
+        return this.id;
     }
 
     getEmail() {
-        return this.email
+        return this.email;
     }
 
     getPosition() {
-        return this. position
+        return "Employee";
     }
 }
 

@@ -14,23 +14,23 @@ class Manager extends Employee {
     }
 
     getName() {
-        return this.name
+        return this.name;
     }
 
     getId() {
-        return this.id
+        return this.id;
     }
 
     getEmail() {
-        return this.email
+        return this.email;
     }
 
     getOfficeNumber() {
-        return this.officeNumber
+        return this.officeNumber;
     }
 
     getPosition() {
-        return this. position
+        return "Manager";
     }
 }
     
