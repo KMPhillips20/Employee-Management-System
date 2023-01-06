@@ -1,5 +1,3 @@
-const inquirer = require('inquirer');
-const prompt = inquirer.createPromptModule();
 
 const Employee = require("./Employee");
 

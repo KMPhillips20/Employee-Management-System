@@ -107,16 +107,6 @@ const employeeBio =[
 
 
 
-const writeFile = data => {
-    fs.writeFile("./dist/team.html", data, err => {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log("Get to know your teammates")
-        }
-    })
-};
-
 const addEmployee = () => {
     return inquirer.prompt(employeeBio)
     .then(employeeData => {
@@ -141,11 +131,21 @@ const addEmployee = () => {
     });
 };
 
+const writeFile = data => {
+    fs.writeFile("./dist/team.html", data, err => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Get to know your teammates")
+        }
+    })
+};
+
 
 addEmployee()
 .then(data => {
-    return generatePage(data);
+    return generatePage(data)
 })
 .then(html => {
-    return writeFile(html);
+    return writeFile(html)
 });

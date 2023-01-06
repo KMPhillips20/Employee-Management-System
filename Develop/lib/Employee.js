@@ -1,5 +1,3 @@
-const inquirer = require('inquirer');
-const prompt = inquirer.createPromptModule();
 
 class Employee {
     constructor(name, id, email){
