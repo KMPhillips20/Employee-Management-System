@@ -99,8 +99,8 @@ const employeeBio =[
         },
         {
             type: "confirm",
-            message: "Do you want to add anymore team members to your company?",
             name: "add",
+            message: "Do you want to add anymore team members to your company?",
             default: false,
         }
     ];
@@ -110,7 +110,7 @@ const employeeBio =[
 const addEmployee = () => {
     return inquirer.prompt(employeeBio)
     .then(employeeData => {
-        let { position, name, email, id, officeNumber, gitHub, school} = employeeData;
+        let { position, name, email, id, officeNumber, gitHub, school} = answers;
         let employee;
         if (position === "Manager") {
             employee = new Manager(name, email, id, officeNumber)
@@ -123,10 +123,11 @@ const addEmployee = () => {
         }
         teamArray.push(employee);
 
-        if (employeeData.confirmAddEmployee) {
-            return addEmployee(teamArray);
-        } else{
-            return teamArray;
+        if (answers.confirmAddEmployee) {
+            return addEmployee();
+        } else {
+            const page = generatePage(teamArray);
+            writeFile(page);
         }
     });
 };
@@ -143,9 +144,3 @@ const writeFile = data => {
 
 
 addEmployee()
-.then(data => {
-    return generatePage(data)
-})
-.then(html => {
-    return writeFile(html)
-});

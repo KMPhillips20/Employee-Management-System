@@ -1,24 +1,65 @@
 // create the team
-const generatePage = teamArray => {
-    employeeList = [];
-    for (let i = 0; teamArray.length>i; i++) {
-        const position = teamArray[i].getPosition();
-
-        if (position === "Manager"){
-            employeeList.push(manager(teamArray[i]));
-        } 
-
-        if (position === "Engineer"){
-            employeeList.push(engineer(teamArray[i]));
-        } 
-
-        if (position === "Intern"){
-            employeeList.push(intern(teamArray[i]));
-        } 
-    }
-    const newTeam = employeeList.join('');
-    return htmlPage(newTeam);
+const managerCard = manager => {
+  return `
+    <article>
+    <h2>Manager: ${manager.name}</h2>
+    <ul>
+    <li>ID: ${manager.id}</li>
+    <li>Email: <a href="mailto:${manager.email}">${manager.email}</li>
+    <li>Office Number: ${manager.officeNumber}</li>
+    </ul>
+    </article>
+    `
 };
+
+const engineerCard = engineer => {
+  return `  
+<article>
+  <h2>Engineer: ${engineer.name}</h2>
+  <ul>
+    <li>ID: ${engineer.id}</li>
+    <li>Email: <a href="mailto:${engineer.email}">${engineer.email}</li>
+    <li>GitHub: <a href="github.com/${engineer.gitHub}">${engineer.gitHub}</a></li>
+    </ul>
+    </article>
+    `
+  };
+  
+const internCard = intern => {
+  return `
+  <article>
+    <h2>Intern: ${intern.name}</h2>
+    <ul>
+    <li>ID: ${intern.id}</li>
+    <li>Email: <a href="mailto:${intern.email}">${intern.email}</a></li>
+    <li>School: ${intern.school}</li>
+    </ul>
+    </article>`
+  }
+  
+  const generatePage = teamArray => {
+      const employeeList = [];
+      console.log(teamArray)
+      for (let i = 0; i < teamArray.length; i++) {
+          console.log(i, teamArray[i]);
+          console.log( teamArray[i].prototype);
+          const position = teamArray[i].getPosition();
+  
+          if (position === "Manager") {
+              employeeList.push(managerCard(teamArray[i]));
+          }
+  
+          if (position === "Engineer") {
+              employeeList.push(engineerCard(teamArray[i]));
+          }
+  
+          if (position === "Intern") {
+              employeeList.push(internCard(teamArray[i]));
+          }
+      }
+      const newTeam = employeeList.join('');
+      return newTeam;
+  };
 
 // export function to generate entire page
 const htmlPage = newTeam => {
@@ -62,30 +103,7 @@ const htmlPage = newTeam => {
     <h1>My Team</h1>
   </header>
   <main>
-    <article>
-      <h2>Manager: ${manager.name}</h2>
-      <ul>
-        <li>ID: ${manager.id}</li>
-        <li>Email: <a href="mailto:${manager.email}">${manager.email}</li>
-        <li>Office Number: ${manager.officeNumber}</li>
-      </ul>
-    </article>
-    <article>
-      <h2>Engineer: ${engineer.name}</h2>
-      <ul>
-        <li>ID: ${engineer.id}</li>
-        <li>Email: <a href="mailto:${engineer.email}">${engineer.email}</li>
-        <li>GitHub: <a href="#${engineer.github}">person</a></li>
-      </ul>
-    </article>
-    <article>
-      <h2>Intern: ${intern.name}</h2>
-      <ul>
-        <li>ID: ${intern.id}</li>
-        <li>Email: <a href="mailto:${intern.email}">${intern.email}</a></li>
-        <li>School: ${intern.school}</li>
-      </ul>
-    </article>
+    $(generatePage(newTeam){
   </main>
   <footer>
     &copy; 2022-2023
@@ -93,4 +111,4 @@ const htmlPage = newTeam => {
 </body>
 </html> `
 }
-module.exports = generatePage;
+module.exports = htmlPage;
