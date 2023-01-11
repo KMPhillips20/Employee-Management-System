@@ -1,6 +1,6 @@
 // create the team
 const generateCrewMembers = (team) => {
- team.map( member => {
+ return team.map( member => {
     if (member.getRole() === "Engineer") {
       return `
       <article>

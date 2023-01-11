@@ -70,7 +70,20 @@ const internPrompts = [
     },
 ];
 
-const pickEmployeePosition = async ({ type }) => {
+const pickEmployeePosition = () => {
+    return prompt({
+            type: "list",
+            message: "What employee position would you like to add to the crew?",
+            choices: [
+                "Manager", 
+                "Engineer", 
+                "Intern",
+            ],
+            name: "type"
+        })
+    }
+
+const getEmployeePosition = async ({ type }) => {
     let response;
     switch(type) {
         case "Manager": {
@@ -107,7 +120,10 @@ const confirmMoreCrewMembers = () => {
 
 const addMoreCrewMembers = ({ addMember }) => {
     if (addMember) {
-        console.log("YOU GOT IT DUDE!");
+        pickEmployeePosition()
+            .then(getEmployeePosition)
+            .then(confirmMoreCrewMembers)
+            .then(addMoreCrewMembers);
     } else {
         const template = pageTemplate(crewMembers);
         fs.writeFileSync("./dist/team.html",template);
@@ -115,25 +131,9 @@ const addMoreCrewMembers = ({ addMember }) => {
 };
 
 prompt(managerPrompts)
-    .then((name, id, email, officeNumber) => {
+    .then(({ name, id, email, officeNumber}) => {
         const manager = new Manager(name, id, email, officeNumber);
         crewMembers.push(manager);
 })
 .then(confirmMoreCrewMembers)
 .then(addMoreCrewMembers)
-.then(() => {
-    return prompt({
-        type: "list",
-        message: "What employee position would you like to add to the crew?",
-        choices: [
-            "Manager", 
-            "Engineer", 
-            "Intern",
-        ],
-        name: "type"
-    })
-})
-.then(pickEmployeePosition)
-.then(confirmMoreCrewMembers)
-.then(addMoreCrewMembers)
-
