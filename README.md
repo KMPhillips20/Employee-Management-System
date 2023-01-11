@@ -12,9 +12,28 @@ This challenge was to build a node.js command line application that takes in inf
 
 ***
 ## Visuals
+Passing Test
+![Passing-Test](./Assets/pass.test1.jpg)
 
-![Passing-Test](./Assets/pass.test.jpg)
-![Terminal Log](./Assets/terminalLog.jpg)
+
+Manager
+![Terminal-Log-Manager](./Assets/manager.jpg)
+
+
+Engineer
+![Terminal-Log-Engineer](./Assets/Engineer.jpg)
+
+
+Intern1
+![Terminal-log-Inter-1](./Assets/Intern1.jpg)
+
+
+Intern2
+![Terminal-log-Inter-2](./Assets/Intern2.jpg)
+
+
+My Team
+![My-Team](./Assets/myTeam.jpg)
 
 
 ***
