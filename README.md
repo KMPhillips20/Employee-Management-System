@@ -33,7 +33,7 @@ Intern2
 
 
 My Team
-![My-Team](./Assets/myTeam.jpg)
+![My-Team](./Assets/mySquad.jpg)
 
 
 ***
