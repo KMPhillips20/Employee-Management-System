@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const generatePage = require('./src/page-template');
+const pageTemplate = require('./src/page-template');
 
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
@@ -109,7 +109,8 @@ const addMoreCrewMembers = ({ addMember }) => {
     if (addMember) {
         console.log("YOU GOT IT DUDE!");
     } else {
-        console.log("YOUR CREW HAS BEEN MADE!");
+        const template = pageTemplate(crewMembers);
+        fs.writeFileSync("./dist/team.html",template);
     }   
 };
 
@@ -132,6 +133,7 @@ prompt(managerPrompts)
         name: "type"
     })
 })
+.then(pickEmployeePosition)
 .then(confirmMoreCrewMembers)
 .then(addMoreCrewMembers)
 
