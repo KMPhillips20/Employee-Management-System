@@ -5,11 +5,13 @@ const generatePage = require('./src/page-template');
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const Employee = require("./lib/Employee");
+
 
 
 const prompt = inquirer.createPromptModule();
 const crewMembers = [];
+
+
 
 const managerPrompts = [
     {
@@ -68,28 +70,59 @@ const internPrompts = [
     },
 ];
 
-prompt(managerPrompts)
-    .then((info) => {
-        const manager = new Manager(info.name, info.id, info.email, info.officeNumber);
-        crewMembers.push(manager);
-})
-.then(() => {
-    return prompt({
-        message: "WOULD YOU LIKE TO ADD ANOTHER MEMBER TO THE CREW?",
-        type: "confirm",
-        name: "addMember",
-    })
-})
-.then(({ addMember }) => {
+const pickEmployeePosition = async ({ type }) => {
+    let response;
+    switch(type) {
+        case "Manager": {
+         const response = await prompt(managerPrompts);
+         const { name, id, email, officeNumber } = response;
+         const manager = new Manager( name, id, email, officeNumber);
+         crewMembers.push(manager);
+         break;
+        }
+        case "Engineer": {
+         const response = await prompt(engineerPrompts);
+         const { name, id, email, gitHub } = response;
+         const engineer = new Engineer(name, id, email, gitHub );
+         crewMembers.push(engineer);
+         break;
+        }
+        case "Intern": {
+         const response = await prompt(internPrompts);
+         const { name, id, email, school } = response;
+         const intern = new Intern(name, id, email, school );
+         crewMembers.push(intern);
+         break;
+        }
+    }
+};
+
+const confirmMoreCrewMembers = () => {
+        return prompt({
+            message: "WOULD YOU LIKE TO ADD ANOTHER MEMBER TO THE CREW?",
+            type: "confirm",
+            name: "addMember",
+        })
+};
+
+const addMoreCrewMembers = ({ addMember }) => {
     if (addMember) {
         console.log("YOU GOT IT DUDE!");
     } else {
-        console.log("Write it up");
-    }
+        console.log("YOUR CREW HAS BEEN MADE!");
+    }   
+};
+
+prompt(managerPrompts)
+    .then((name, id, email, officeNumber) => {
+        const manager = new Manager(name, id, email, officeNumber);
+        crewMembers.push(manager);
 })
+.then(confirmMoreCrewMembers)
+.then(addMoreCrewMembers)
 .then(() => {
     return prompt({
-        type: "rawlist",
+        type: "list",
         message: "What employee position would you like to add to the crew?",
         choices: [
             "Manager", 
@@ -99,20 +132,6 @@ prompt(managerPrompts)
         name: "type"
     })
 })
-.then(({ type }) => {
-    switch(type) {
-        case "Manager": {
-            return prompt(managerPrompts);
-        }
-        case "Engineer": {
-            return prompt(engineerPrompts);
-        }
-        case "Intern": {
-            return prompt(internPrompts);
-        }
-    }
-})
-.then((employee) => {
-    console.log(employee);
-});
+.then(confirmMoreCrewMembers)
+.then(addMoreCrewMembers)
 
