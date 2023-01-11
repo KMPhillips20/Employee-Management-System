@@ -5,6 +5,7 @@ const generateCrewMembers = (team) => {
       return `
       <article>
         <h2 class="text-white bg-primary p-3">${member.getRole()}</h2>
+        <h3> ${member.getName()}</h3>
         <ul class="text-black">
           <li>ID: ${member.getId()}</li>
           <li>Email: ${member.getEmail()} </li>
@@ -17,6 +18,7 @@ const generateCrewMembers = (team) => {
       return `
       <article>
         <h2 class="text-white bg-primary p-3">${member.getRole()}</h2>
+        <h3> ${member.getName()}</h3>
         <ul class="text-black">
           <li>ID: ${member.getId()}</li>
           <li>Email: ${member.getEmail()} </li>
@@ -29,6 +31,7 @@ const generateCrewMembers = (team) => {
         return `
         <article>
           <h2 class="text-white bg-primary p-3">${member.getRole()}</h2>
+          <h3> ${member.getName()}</h3>
           <ul class="text-black">
             <li>ID: ${member.getId()}</li>
             <li>Email: ${member.getEmail()} </li>
@@ -36,7 +39,6 @@ const generateCrewMembers = (team) => {
           </ul>
         </article>
         `
-
       }
     
 
@@ -89,31 +91,7 @@ return `
   <header>
     <h1 class="text-warning">My Team</h1>
   </header>
-  <main class="p-3">
-    <article>
-      <h2 class="text-white bg-danger p-3">Manager</h2>
-      <ul class=" text-black">
-        <li>ID: 1</li>
-        <li>Email: manager@email.com</li>
-        <li>Office Number: 123</li>
-      </ul>
-    </article>
-    <article>
-      <h2 class="text-white bg-primary p-3">Engineer</h2>
-      <ul class="text-black">
-        <li>ID: 2</li>
-        <li>Email: engineer@email.com</li>
-        <li>GitHub: <a href="#github">person</a></li>
-      </ul>
-    </article>
-    <article>
-      <h2 class="text-white bg-success p-2">Intern</h2>
-      <ul class="text-black">
-        <li>ID: 3</li>
-        <li>Email: intern@email.com</li>
-        <li>School: FUN University</li>
-      </ul>
-    </article>
+  <main>
     ${generateCrewMembers(team)}
   </main>
   <footer>
